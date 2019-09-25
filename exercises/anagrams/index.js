@@ -8,39 +8,22 @@
 //   anagrams('RAIL! SAFETY!', 'fairy tales') --> True
 //   anagrams('Hi there', 'Bye there') --> False
 
-function createCharMap(str) {
-  const charMap = {};
+//another solution by converting a charmap to an array, sorting the string, then checking for equality
 
-  for (character of str.replace(/[^\w]/g, '').toLowerCase()) {
-    charMap[character] = charMap[character] + 1 || 1;
-  }
-
-  return charMap;
-}
-
-function objectToArray(obj) {
-  let arr = [];
-
-  for (item in obj) {
-    arr.push(item);
-  }
-
-  return arr;
+function cleanString(str) {
+  return str
+    .replace(/[^\w]/g, '')
+    .toLowerCase()
+    .split('')
+    .sort()
+    .join('');
 }
 
 function anagrams(stringA, stringB) {
-  let leftMap = createCharMap(stringA);
-  let rightMap = createCharMap(stringB);
-  let leftArr = objectToArray(leftMap);
-  let rightArr = objectToArray(rightMap);
+  let leftStr = cleanString(stringA);
+  let rightStr = cleanString(stringB);
 
-  leftArr = leftArr.sort().toString();
-  rightArr = rightArr.sort().toString();
-
-  console.log(leftArr);
-  console.log(rightArr);
-
-  if (leftArr === rightArr) return true;
+  if (leftStr === rightStr) return true;
   else return false;
 }
 
