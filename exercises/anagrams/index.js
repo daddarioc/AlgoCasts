@@ -20,11 +20,7 @@ function cleanString(str) {
 }
 
 function anagrams(stringA, stringB) {
-  let leftStr = cleanString(stringA);
-  let rightStr = cleanString(stringB);
-
-  if (leftStr === rightStr) return true;
-  else return false;
+  return cleanString(stringA) === cleanString(stringB);
 }
 
 //working solution
